@@ -45,7 +45,11 @@ while (count <= gridWidth * gridWidth) {
 /***********
  * QUERIES *
 ***********/
-
+let drag = false;
+let brushColor = document.querySelector('.current-brush');
+let colorChoice = document.querySelectorAll('.palette div');
+let canvasPaint = document.querySelectorAll('.canvas div');
+let brushes = brushColor.classList
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
@@ -60,7 +64,23 @@ while (count <= gridWidth * gridWidth) {
 // empty at first, though a console.log just to know they're being
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
+colorChoice.forEach(Element => {
+  Element.addEventListener('click', function(){
+  if (Element.classList[0] === 'palette-color'){
+    brushColor.classList.replace(brushColor.classList[1], Element.classList[1])
+    
+  }
+})
+})
 
+// canvas.forEach(Element => {
+//   Element.addEventListener('mouseenter', function(){
+//   if (Element.classList[0] === 'palette-color'){
+//     canvas.classList.add(brushColor.classList[1], Element.classList[1])
+//     console.log(element.classList);
+//   }
+// })
+// })
 
 
 /**************************
@@ -71,3 +91,36 @@ while (count <= gridWidth * gridWidth) {
 // You'll need to add the appropriate event listener for each
 // square and for each palette color from the functions you
 // wrote above.
+
+
+//actual painting code
+let squareGrab = document.querySelectorAll('.canvas .square');
+let squareCounter = 0;
+
+
+// while(squareCounter <= 100){
+
+//   squareGrab[squareCounter].addEventListener('click', function(quack){
+//     console.log(squareGrab[squareCounter]);
+//     quack.target.classList.replace(quack.target.classList[1], brushColor.classList[1])
+//   })
+
+//   squareCounter++;
+// }
+
+while(squareCounter <= 100){
+
+  squareGrab[squareCounter].addEventListener('click', function(){
+    console.log(this);
+    this.classList.replace(this.classList[1], brushColor.classList[1])
+  })
+
+  squareCounter++;
+}
+
+
+// squareGrab.forEach(square => square.addEventListener('click', function(){
+//     console.log(square);
+//     square.classList.replace(square.classList[1], brushColor.classList[1])
+//   }))
+
